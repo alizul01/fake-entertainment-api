@@ -13,7 +13,12 @@ class MusicController extends Controller
      */
     public function index()
     {
-        //
+        $music = Music::all();
+        $response = [
+            'status' => 'success',
+            'message' => 'Data retrieved successfully',
+            'data' => $music
+        ];
     }
 
     /**
@@ -21,7 +26,12 @@ class MusicController extends Controller
      */
     public function store(StoreMusicRequest $request)
     {
-        //
+        $music = Music::create($request->validated());
+        $response = [
+            'status' => 'success',
+            'message' => 'Data stored successfully',
+            'data' => $music
+        ];
     }
 
     /**
@@ -29,7 +39,12 @@ class MusicController extends Controller
      */
     public function update(UpdateMusicRequest $request, Music $music)
     {
-        //
+        $music->update($request->validated());
+        $response = [
+            'status' => 'success',
+            'message' => 'Data updated successfully',
+            'data' => $music
+        ];
     }
 
     /**
@@ -37,6 +52,11 @@ class MusicController extends Controller
      */
     public function destroy(Music $music)
     {
-        //
+        $music->delete();
+        $response = [
+            'status' => 'success',
+            'message' => 'Data deleted successfully',
+            'data' => $music
+        ];
     }
 }

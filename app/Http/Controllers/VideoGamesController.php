@@ -13,7 +13,12 @@ class VideoGamesController extends Controller
      */
     public function index()
     {
-        //
+        $videoGames = VideoGames::all();
+        $response = [
+            'status' => 'success',
+            'message' => 'Data retrieved successfully',
+            'data' => $videoGames
+        ];
     }
 
     /**
@@ -21,7 +26,12 @@ class VideoGamesController extends Controller
      */
     public function store(StoreVideoGamesRequest $request)
     {
-        //
+        $videoGames = VideoGames::create($request->validated());
+        $response = [
+            'status' => 'success',
+            'message' => 'Data stored successfully',
+            'data' => $videoGames
+        ];
     }
 
     /**
@@ -29,7 +39,12 @@ class VideoGamesController extends Controller
      */
     public function update(UpdateVideoGamesRequest $request, VideoGames $videoGames)
     {
-        //
+        $videoGames->update($request->validated());
+        $response = [
+            'status' => 'success',
+            'message' => 'Data updated successfully',
+            'data' => $videoGames
+        ];
     }
 
     /**
@@ -37,6 +52,11 @@ class VideoGamesController extends Controller
      */
     public function destroy(VideoGames $videoGames)
     {
-        //
+        $videoGames->delete();
+        $response = [
+            'status' => 'success',
+            'message' => 'Data deleted successfully',
+            'data' => $videoGames
+        ];
     }
 }
